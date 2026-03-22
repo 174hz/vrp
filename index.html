@@ -10,7 +10,7 @@
         body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #1e293b; }
         .accent-blue { color: #2563eb; }
         .bg-blue { background-color: #2563eb; }
-        #status-message { transition: opacity 0.5s ease-in-out; }
+        #status-message { transition: all 0.5s ease-in-out; }
     </style>
 </head>
 <body class="selection:bg-blue-100 selection:text-blue-900">
@@ -63,7 +63,7 @@
             </div>
 
             <div id="form-wrapper">
-                <form id="audit-form" action="https://formspree.io/f/xqeyvkvy" method="POST" class="grid md:grid-cols-2 gap-8 bg-white p-8 md:p-12 rounded-sm shadow-xl border border-slate-200">
+                <form id="audit-form" action="https://formspree.io/f/xkoqlook" method="POST" class="grid md:grid-cols-2 gap-8 bg-white p-8 md:p-12 rounded-sm shadow-xl border border-slate-200">
                     
                     <div class="col-span-2 md:col-span-1">
                         <label class="block text-xs font-black uppercase tracking-widest mb-3 text-slate-500">Contact Email</label>
@@ -105,7 +105,8 @@
                 <div id="status-message" class="hidden text-center bg-white p-12 md:p-20 rounded-sm shadow-xl border border-slate-200">
                     <div class="text-6xl mb-6">✅</div>
                     <h2 class="text-4xl font-black text-slate-900 uppercase tracking-tighter mb-4">Request Received.</h2>
-                    <p class="text-xl text-slate-600 font-medium italic">Our team will review your data and reach out within 24 hours to discuss your revenue audit.</p>
+                    <p class="text-xl text-slate-600 font-medium italic mb-4">Our team will review your data and reach out within 24 hours.</p>
+                    <p class="text-xs text-slate-400 uppercase tracking-widest">This window will reset in 6 seconds...</p>
                 </div>
             </div>
         </div>
@@ -136,9 +137,19 @@
                 }
             }).then(response => {
                 if (response.ok) {
-                    // Hide form and show success message
+                    // 1. Hide form and show success message
                     form.classList.add("hidden");
                     statusMessage.classList.remove("hidden");
+                    
+                    // 2. Set a timer to reset everything after 6 seconds
+                    setTimeout(() => {
+                        form.reset(); // Clear the inputs
+                        form.classList.remove("hidden");
+                        statusMessage.classList.add("hidden");
+                        submitButton.disabled = false;
+                        submitButton.innerText = "SUBMIT AUDIT REQUEST";
+                    }, 6000);
+
                 } else {
                     response.json().then(data => {
                         alert("Oops! There was a problem. Please check your fields and try again.");
@@ -153,10 +164,8 @@
             });
         }
         
-        // This is the CRITICAL line that connects the button to the script
         form.addEventListener("submit", handleSubmit);
     </script>
 
 </body>
 </html>
-  
