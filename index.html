@@ -10,32 +10,36 @@
         
         body { 
             font-family: 'Inter', sans-serif; 
-            background-color: #f8fafc; 
-            /* Enhanced Background Visibility Logic (85% Opacity) */
-            background-image: linear-gradient(rgba(248, 250, 252, 0.85), rgba(248, 250, 252, 0.85)), url('bg.png');
+            background-color: #f1f5f9; 
+            /* 60% Transparency (0.4 Opacity Overlay) */
+            background-image: linear-gradient(rgba(248, 250, 252, 0.4), rgba(248, 250, 252, 0.4)), url('bg.png');
             background-repeat: no-repeat; 
             background-attachment: fixed; 
             background-size: cover; 
             background-position: center;
-            color: #1e293b; 
+            color: #0f172a; 
+        }
+
+        /* Text shadow for better legibility on bold background */
+        h1, h2 {
+            text-shadow: 0 2px 4px rgba(255,255,255,0.5);
         }
 
         .accent-blue { color: #2563eb; }
         .bg-blue { background-color: #2563eb; }
         
-        /* Consistent, Symmetrical Form & Panel Styles */
         .form-container, .value-panel {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(226, 232, 240, 0.8);
-            border-radius: 2px; /* Uniform subtle radius */
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 1);
+            border-radius: 4px;
         }
 
         input, select, textarea {
-            border: 1px solid rgba(226, 232, 240, 1.0) !important;
+            border: 1px solid rgba(203, 213, 225, 1) !important;
+            background-color: #ffffff !important;
         }
 
-        /* Smooth transitions for form reset */
         #audit-form, #status-message {
             transition: opacity 0.5s ease-in-out;
         }
@@ -43,73 +47,75 @@
 </head>
 <body class="selection:bg-blue-100 selection:text-blue-900">
 
-    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 py-4 px-8 flex justify-between items-center">
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 py-4 px-8 flex justify-between items-center">
         <div class="text-3xl font-black tracking-tighter text-slate-900 uppercase">VRP<span class="accent-blue">.</span></div>
         <a href="#audit" class="text-xs font-black uppercase tracking-widest text-slate-600 hover:text-blue-600 transition">Get Started</a>
     </nav>
 
     <section class="relative min-h-screen flex flex-col justify-center items-center text-center px-6 pt-20">
-        <h1 class="text-6xl md:text-8xl font-black mb-8 uppercase tracking-tighter leading-none text-slate-900">
-            Your Leads Are <br><span class="accent-blue italic">Dying</span> In Your Inbox.
-        </h1>
-        <p class="text-xl md:text-2xl max-w-2xl mb-12 text-slate-600 font-medium leading-tight">
-            Stop letting 30% of your revenue slip away. We provide <span class="text-slate-900 font-black border-b-4 border-blue-200">founder-level closing</span> for elite high-ticket services.
-        </p>
-        <div class="flex flex-col md:flex-row gap-6">
-            <a href="#audit" class="bg-blue text-white font-black py-6 px-14 rounded-sm text-xl hover:bg-blue-700 transition-all uppercase tracking-widest shadow-2xl shadow-blue-200">
-                Book Revenue Audit
-            </a>
+        <div class="bg-white/10 backdrop-blur-sm p-8 rounded-xl">
+            <h1 class="text-6xl md:text-8xl font-black mb-8 uppercase tracking-tighter leading-none text-slate-900">
+                Your Leads Are <br><span class="accent-blue italic">Dying</span> In Your Inbox.
+            </h1>
+            <p class="text-xl md:text-2xl max-w-2xl mx-auto mb-12 text-slate-800 font-bold leading-tight">
+                Stop letting 30% of your revenue slip away. We provide <span class="text-slate-900 font-black border-b-4 border-blue-400">founder-level closing</span> for elite high-ticket services.
+            </p>
+            <div class="flex flex-col md:flex-row justify-center gap-6">
+                <a href="#audit" class="bg-blue text-white font-black py-6 px-14 rounded-sm text-xl hover:bg-blue-700 transition-all uppercase tracking-widest shadow-2xl shadow-blue-400">
+                    Book Revenue Audit
+                </a>
+            </div>
         </div>
     </section>
 
-    <section class="py-32 px-8 border-y border-slate-100 bg-white/50">
+    <section class="py-32 px-8 border-y border-slate-200 bg-slate-50/30">
         <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-12">
-            <div class="p-8 value-panel">
+            <div class="p-8 value-panel shadow-xl">
                 <h3 class="text-xs font-black uppercase tracking-[0.3em] accent-blue mb-4">The Problem</h3>
                 <h2 class="text-2xl font-black text-slate-900 uppercase tracking-tight mb-4">The High-Ticket Silence.</h2>
-                <p class="text-slate-500 font-medium leading-relaxed">Every hour a premium lead sits without a human response, the likelihood of a conversion drops by 400%.</p>
+                <p class="text-slate-600 font-semibold leading-relaxed">Every hour a premium lead sits without a human response, the likelihood of a conversion drops by 400%.</p>
             </div>
-            <div class="p-8 value-panel">
+            <div class="p-8 value-panel shadow-xl">
                 <h3 class="text-xs font-black uppercase tracking-[0.3em] accent-blue mb-4">The Solution</h3>
                 <h2 class="text-2xl font-black text-slate-900 uppercase tracking-tight mb-4">Veteran Expertise.</h2>
-                <p class="text-slate-500 font-medium leading-relaxed">We install 30+ years of sales leadership and startup-founder logic directly into your brand's pipeline.</p>
+                <p class="text-slate-600 font-semibold leading-relaxed">We install 30+ years of sales leadership and startup-founder logic directly into your brand's pipeline.</p>
             </div>
-            <div class="p-8 value-panel">
+            <div class="p-8 value-panel shadow-xl">
                 <h3 class="text-xs font-black uppercase tracking-[0.3em] accent-blue mb-4">The Result</h3>
                 <h2 class="text-2xl font-black text-slate-900 uppercase tracking-tight mb-4">Pure Performance.</h2>
-                <p class="text-slate-500 font-medium leading-relaxed">We operate on a commission-only partnership. We handle the objections, you focus on the vision.</p>
+                <p class="text-slate-600 font-semibold leading-relaxed">We operate on a commission-only partnership. We handle the objections, you focus on the vision.</p>
             </div>
         </div>
     </section>
 
     <section id="audit" class="py-32 px-8">
         <div class="max-w-4xl mx-auto">
-            <div class="text-center mb-16">
+            <div class="text-center mb-16 bg-white/20 backdrop-blur-md py-8 rounded-lg">
                 <h2 class="text-5xl md:text-6xl font-black mb-4 uppercase text-slate-900 tracking-tighter">Let's Fix Your Pipeline.</h2>
-                <p class="text-slate-600 text-xl font-medium">Tell us about your current lead flow. If there is a fit, we take over the closing for you.</p>
+                <p class="text-slate-800 text-xl font-bold">Tell us about your current lead flow. If there is a fit, we take over the closing for you.</p>
             </div>
 
             <div id="form-wrapper">
-                <form id="audit-form" action="https://formspree.io/f/xqeyvkvy" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-8 form-container p-8 md:p-12 shadow-2xl">
+                <form id="audit-form" action="https://formspree.io/f/xqeyvkvy" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-8 form-container p-8 md:p-12 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)]">
                     
                     <div class="col-span-1">
                         <label class="block text-xs font-black uppercase tracking-widest mb-3 text-slate-500">Contact Email</label>
-                        <input type="email" name="email" placeholder="email@company.com" class="w-full bg-white p-4 rounded-sm focus:outline-none focus:border-blue-500 font-bold transition" required>
+                        <input type="email" name="email" placeholder="email@company.com" class="w-full p-4 rounded-sm focus:outline-none focus:border-blue-500 font-bold transition" required>
                     </div>
 
                     <div class="col-span-1">
                         <label class="block text-xs font-black uppercase tracking-widest mb-3 text-slate-500">Phone</label>
-                        <input type="tel" name="phone" placeholder="+1 (555) 000-0000" class="w-full bg-white p-4 rounded-sm focus:outline-none focus:border-blue-500 font-bold transition">
+                        <input type="tel" name="phone" placeholder="+1 (555) 000-0000" class="w-full p-4 rounded-sm focus:outline-none focus:border-blue-500 font-bold transition">
                     </div>
 
                     <div class="col-span-1">
                         <label class="block text-xs font-black uppercase tracking-widest mb-3 text-slate-500">Company Name</label>
-                        <input type="text" name="company" placeholder="e.g. Global Tech Solutions" class="w-full bg-white p-4 rounded-sm focus:outline-none focus:border-blue-500 font-bold transition" required>
+                        <input type="text" name="company" placeholder="e.g. Global Tech Solutions" class="w-full p-4 rounded-sm focus:outline-none focus:border-blue-500 font-bold transition" required>
                     </div>
 
                     <div class="col-span-1">
                         <label class="block text-xs font-black uppercase tracking-widest mb-3 text-slate-500">Avg. Transaction Value</label>
-                        <select name="project_value" class="w-full bg-white p-4 rounded-sm focus:outline-none focus:border-blue-500 font-bold transition appearance-none">
+                        <select name="project_value" class="w-full p-4 rounded-sm focus:outline-none focus:border-blue-500 font-bold transition appearance-none">
                             <option>$5,000 - $10,000</option>
                             <option>$10,000 - $25,000</option>
                             <option>$50,000+</option>
@@ -118,18 +124,18 @@
 
                     <div class="col-span-1 md:col-span-2">
                         <label class="block text-xs font-black uppercase tracking-widest mb-3 text-slate-500">Your Sales Bottleneck</label>
-                        <textarea name="bottleneck" placeholder="What is stopping you from closing more high-ticket deals right now?" rows="5" class="w-full bg-white p-4 rounded-sm focus:outline-none focus:border-blue-500 font-bold transition" required></textarea>
+                        <textarea name="bottleneck" placeholder="What is stopping you from closing more high-ticket deals right now?" rows="5" class="w-full p-4 rounded-sm focus:outline-none focus:border-blue-500 font-bold transition" required></textarea>
                     </div>
 
                     <div class="col-span-1 md:col-span-2 text-center pt-8">
-                        <button type="submit" id="submit-button" class="bg-blue text-white font-black py-6 px-16 rounded-sm text-xl hover:bg-blue-700 transition-all uppercase tracking-widest w-full md:w-auto shadow-lg shadow-blue-100">
+                        <button type="submit" id="submit-button" class="bg-blue text-white font-black py-6 px-16 rounded-sm text-xl hover:bg-blue-700 transition-all uppercase tracking-widest w-full md:w-auto shadow-lg shadow-blue-200">
                             Submit Audit Request
                         </button>
-                        <p class="mt-6 text-xs text-slate-400 uppercase tracking-widest font-black italic">* Commission-only partnership. Limited availability.</p>
+                        <p class="mt-6 text-xs text-slate-500 uppercase tracking-widest font-black italic">* Commission-only partnership. Limited availability.</p>
                     </div>
                 </form>
 
-                <div id="status-message" class="hidden text-center form-container p-12 md:p-20 rounded-sm shadow-2xl">
+                <div id="status-message" class="hidden text-center form-container p-12 md:p-20 shadow-2xl">
                     <div class="text-6xl mb-6">✅</div>
                     <h2 class="text-4xl font-black text-slate-900 uppercase tracking-tighter mb-4">Request Received.</h2>
                     <p class="text-xl text-slate-600 font-medium italic mb-4">We will review your pipeline and reach out within 24 hours.</p>
@@ -139,9 +145,9 @@
         </div>
     </section>
 
-    <footer class="py-20 px-8 bg-white/90 border-t border-slate-100 text-center">
+    <footer class="py-20 px-8 bg-white/95 border-t border-slate-200 text-center">
         <div class="text-2xl font-black tracking-tighter mb-4 text-slate-900 uppercase">VRP<span class="accent-blue">.</span></div>
-        <p class="text-slate-400 text-sm font-bold">&copy; 2026 Vetorum Revenue Partners. All Rights Reserved.</p>
+        <p class="text-slate-500 text-sm font-bold">&copy; 2026 Vetorum Revenue Partners. All Rights Reserved.</p>
     </footer>
 
     <script>
@@ -153,9 +159,7 @@
             event.preventDefault();
             submitButton.disabled = true;
             submitButton.innerText = "SENDING...";
-            
             const data = new FormData(event.target);
-            
             fetch(event.target.action, {
                 method: 'POST',
                 body: data,
@@ -164,7 +168,6 @@
                 if (response.ok) {
                     form.classList.add("hidden");
                     statusMessage.classList.remove("hidden");
-                    
                     setTimeout(() => {
                         form.reset();
                         form.classList.remove("hidden");
@@ -174,12 +177,12 @@
                     }, 6000);
                 } else {
                     response.json().then(data => {
-                        alert("Submission error. Please check your Formspree activation.");
+                        alert("Submission error.");
                         submitButton.disabled = false;
                     })
                 }
             }).catch(error => {
-                alert("Connection error. Please try again.");
+                alert("Connection error.");
                 submitButton.disabled = false;
             });
         }
