@@ -11,7 +11,6 @@
         body { 
             font-family: 'Inter', sans-serif; 
             background-color: #f1f5f9; 
-            /* 60% Transparency (0.4 Opacity Overlay) */
             background-image: linear-gradient(rgba(248, 250, 252, 0.4), rgba(248, 250, 252, 0.4)), url('bg.png');
             background-repeat: no-repeat; 
             background-attachment: fixed; 
@@ -20,7 +19,6 @@
             color: #0f172a; 
         }
 
-        /* Text shadow for better legibility on bold background */
         h1, h2 {
             text-shadow: 0 2px 4px rgba(255,255,255,0.5);
         }
@@ -68,26 +66,6 @@
         </div>
     </section>
 
-    <section class="py-32 px-8 border-y border-slate-200 bg-slate-50/30">
-        <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-12">
-            <div class="p-8 value-panel shadow-xl">
-                <h3 class="text-xs font-black uppercase tracking-[0.3em] accent-blue mb-4">The Problem</h3>
-                <h2 class="text-2xl font-black text-slate-900 uppercase tracking-tight mb-4">The High-Ticket Silence.</h2>
-                <p class="text-slate-600 font-semibold leading-relaxed">Every hour a premium lead sits without a human response, the likelihood of a conversion drops by 400%.</p>
-            </div>
-            <div class="p-8 value-panel shadow-xl">
-                <h3 class="text-xs font-black uppercase tracking-[0.3em] accent-blue mb-4">The Solution</h3>
-                <h2 class="text-2xl font-black text-slate-900 uppercase tracking-tight mb-4">Veteran Expertise.</h2>
-                <p class="text-slate-600 font-semibold leading-relaxed">We install 30+ years of sales leadership and startup-founder logic directly into your brand's pipeline.</p>
-            </div>
-            <div class="p-8 value-panel shadow-xl">
-                <h3 class="text-xs font-black uppercase tracking-[0.3em] accent-blue mb-4">The Result</h3>
-                <h2 class="text-2xl font-black text-slate-900 uppercase tracking-tight mb-4">Pure Performance.</h2>
-                <p class="text-slate-600 font-semibold leading-relaxed">We operate on a commission-only partnership. We handle the objections, you focus on the vision.</p>
-            </div>
-        </div>
-    </section>
-
     <section id="audit" class="py-32 px-8">
         <div class="max-w-4xl mx-auto">
             <div class="text-center mb-16 bg-white/20 backdrop-blur-md py-8 rounded-lg">
@@ -110,7 +88,7 @@
 
                     <div class="col-span-1">
                         <label class="block text-xs font-black uppercase tracking-widest mb-3 text-slate-500">Company Name</label>
-                        <input type="text" name="company" placeholder="e.g. Global Tech Solutions" class="w-full p-4 rounded-sm focus:outline-none focus:border-blue-500 font-bold transition" required>
+                        <input type="text" name="company" placeholder="Company Name" class="w-full p-4 rounded-sm focus:outline-none focus:border-blue-500 font-bold transition" required>
                     </div>
 
                     <div class="col-span-1">
@@ -131,7 +109,6 @@
                         <button type="submit" id="submit-button" class="bg-blue text-white font-black py-6 px-16 rounded-sm text-xl hover:bg-blue-700 transition-all uppercase tracking-widest w-full md:w-auto shadow-lg shadow-blue-200">
                             Submit Audit Request
                         </button>
-                        <p class="mt-6 text-xs text-slate-500 uppercase tracking-widest font-black italic">* Commission-only partnership. Limited availability.</p>
                     </div>
                 </form>
 
@@ -139,16 +116,10 @@
                     <div class="text-6xl mb-6">✅</div>
                     <h2 class="text-4xl font-black text-slate-900 uppercase tracking-tighter mb-4">Request Received.</h2>
                     <p class="text-xl text-slate-600 font-medium italic mb-4">We will review your pipeline and reach out within 24 hours.</p>
-                    <p class="text-xs text-slate-400 uppercase tracking-widest">Resetting form in 6 seconds...</p>
                 </div>
             </div>
         </div>
     </section>
-
-    <footer class="py-20 px-8 bg-white/95 border-t border-slate-200 text-center">
-        <div class="text-2xl font-black tracking-tighter mb-4 text-slate-900 uppercase">VRP<span class="accent-blue">.</span></div>
-        <p class="text-slate-500 text-sm font-bold">&copy; 2026 Vetorum Revenue Partners. All Rights Reserved.</p>
-    </footer>
 
     <script>
         const form = document.getElementById("audit-form");
@@ -159,8 +130,10 @@
             event.preventDefault();
             submitButton.disabled = true;
             submitButton.innerText = "SENDING...";
+            
             const data = new FormData(event.target);
-            fetch(event.target.action, {
+            
+            fetch("https://formspree.io/f/xnjoynny", {
                 method: 'POST',
                 body: data,
                 headers: { 'Accept': 'application/json' }
@@ -168,24 +141,16 @@
                 if (response.ok) {
                     form.classList.add("hidden");
                     statusMessage.classList.remove("hidden");
-                    setTimeout(() => {
-                        form.reset();
-                        form.classList.remove("hidden");
-                        statusMessage.classList.add("hidden");
-                        submitButton.disabled = false;
-                        submitButton.innerText = "SUBMIT AUDIT REQUEST";
-                    }, 6000);
+                    form.reset();
                 } else {
-                    response.json().then(data => {
-                        alert("Submission error.");
-                        submitButton.disabled = false;
-                        submitButton.innerText = "SUBMIT AUDIT REQUEST";
-                    })
+                    alert("Submission failed. Please check if you have verified your email with Formspree.");
+                    submitButton.disabled = false;
+                    submitButton.innerText = "Submit Audit Request";
                 }
             }).catch(error => {
                 alert("Connection error.");
                 submitButton.disabled = false;
-                submitButton.innerText = "SUBMIT AUDIT REQUEST";
+                submitButton.innerText = "Submit Audit Request";
             });
         }
         form.addEventListener("submit", handleSubmit);
