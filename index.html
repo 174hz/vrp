@@ -96,7 +96,7 @@
             </div>
 
             <div id="form-wrapper">
-                <form id="audit-form" action="https://formspree.io/f/xqeyvkvy" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-8 form-container p-8 md:p-12 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)]">
+                <form id="audit-form" action="https://formspree.io/f/xnjoynny" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-8 form-container p-8 md:p-12 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)]">
                     
                     <div class="col-span-1">
                         <label class="block text-xs font-black uppercase tracking-widest mb-3 text-slate-500">Contact Email</label>
@@ -179,11 +179,13 @@
                     response.json().then(data => {
                         alert("Submission error.");
                         submitButton.disabled = false;
+                        submitButton.innerText = "SUBMIT AUDIT REQUEST";
                     })
                 }
             }).catch(error => {
                 alert("Connection error.");
                 submitButton.disabled = false;
+                submitButton.innerText = "SUBMIT AUDIT REQUEST";
             });
         }
         form.addEventListener("submit", handleSubmit);
