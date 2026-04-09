@@ -128,27 +128,31 @@
 
         async function handleSubmit(event) {
             event.preventDefault();
+            
+            // Visual feedback for the user
             submitButton.disabled = true;
             submitButton.innerText = "SENDING...";
             
             const data = new FormData(event.target);
             
-            fetch("https://formspree.io/f/xnjoynny", {
+            fetch(event.target.action, {
                 method: 'POST',
                 body: data,
                 headers: { 'Accept': 'application/json' }
             }).then(response => {
                 if (response.ok) {
+                    // Hide form and show your success div
                     form.classList.add("hidden");
                     statusMessage.classList.remove("hidden");
                     form.reset();
                 } else {
-                    alert("Submission failed. Please check if you have verified your email with Formspree.");
+                    // Error handling
+                    alert("Submission failed. Please ensure your Formspree account is active.");
                     submitButton.disabled = false;
                     submitButton.innerText = "Submit Audit Request";
                 }
             }).catch(error => {
-                alert("Connection error.");
+                alert("Connection error. Please try again.");
                 submitButton.disabled = false;
                 submitButton.innerText = "Submit Audit Request";
             });
