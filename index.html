@@ -1,77 +1,159 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Form</title>
+    <title>VRP | Vetorum Revenue Partners | Elite High-Ticket Closing</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Basic styling to keep things clean */
-        body { font-family: sans-serif; margin: 40px; line-height: 1.6; }
-        form { max-width: 400px; }
-        .field { margin-bottom: 15px; }
-        label { display: block; margin-bottom: 5px; }
-        input, textarea { width: 100%; padding: 8px; box-sizing: border-box; }
-        button { padding: 10px 20px; cursor: pointer; background-color: #007bff; color: white; border: none; border-radius: 4px; }
-        #form-status { margin-top: 15px; font-weight: bold; }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #f1f5f9; 
+            background-image: linear-gradient(rgba(248, 250, 252, 0.4), rgba(248, 250, 252, 0.4)), url('bg.png');
+            background-repeat: no-repeat; 
+            background-attachment: fixed; 
+            background-size: cover; 
+            background-position: center;
+            color: #0f172a; 
+        }
+
+        h1, h2 {
+            text-shadow: 0 2px 4px rgba(255,255,255,0.5);
+        }
+
+        .accent-blue { color: #2563eb; }
+        .bg-blue { background-color: #2563eb; }
+        
+        .form-container, .value-panel {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 1);
+            border-radius: 4px;
+        }
+
+        input, select, textarea {
+            border: 1px solid rgba(203, 213, 225, 1) !important;
+            background-color: #ffffff !important;
+        }
+
+        #audit-form, #status-message {
+            transition: opacity 0.5s ease-in-out;
+        }
     </style>
 </head>
-<body>
+<body class="selection:bg-blue-100 selection:text-blue-900">
 
-    <h2>Contact Us</h2>
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 py-4 px-8 flex justify-between items-center">
+        <div class="text-3xl font-black tracking-tighter text-slate-900 uppercase">VRP<span class="accent-blue">.</span></div>
+        <a href="#audit" class="text-xs font-black uppercase tracking-widest text-slate-600 hover:text-blue-600 transition">Get Started</a>
+    </nav>
 
-    <form id="my-form" action="https://formspree.io/f/xnjoynny" method="POST">
-        <div class="field">
-            <label for="email">Email Address:</label>
-            <input type="email" name="email" id="email" required>
+    <section class="relative min-h-screen flex flex-col justify-center items-center text-center px-6 pt-20">
+        <div class="bg-white/10 backdrop-blur-sm p-8 rounded-xl">
+            <h1 class="text-6xl md:text-8xl font-black mb-8 uppercase tracking-tighter leading-none text-slate-900">
+                Your Leads Are <br><span class="accent-blue italic">Dying</span> In Your Inbox.
+            </h1>
+            <p class="text-xl md:text-2xl max-w-2xl mx-auto mb-12 text-slate-800 font-bold leading-tight">
+                Stop letting 30% of your revenue slip away. We provide <span class="text-slate-900 font-black border-b-4 border-blue-400">founder-level closing</span> for elite high-ticket services.
+            </p>
+            <div class="flex flex-col md:flex-row justify-center gap-6">
+                <a href="#audit" class="bg-blue text-white font-black py-6 px-14 rounded-sm text-xl hover:bg-blue-700 transition-all uppercase tracking-widest shadow-2xl shadow-blue-400">
+                    Book Revenue Audit
+                </a>
+            </div>
         </div>
+    </section>
 
-        <div class="field">
-            <label for="message">Message:</label>
-            <textarea name="message" id="message" rows="4" required></textarea>
+    <section id="audit" class="py-32 px-8">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16 bg-white/20 backdrop-blur-md py-8 rounded-lg">
+                <h2 class="text-5xl md:text-6xl font-black mb-4 uppercase text-slate-900 tracking-tighter">Let's Fix Your Pipeline.</h2>
+                <p class="text-slate-800 text-xl font-bold">Tell us about your current lead flow. If there is a fit, we take over the closing for you.</p>
+            </div>
+
+            <div id="form-wrapper">
+                <form id="audit-form" action="https://formspree.io/f/xnjoynny" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-8 form-container p-8 md:p-12 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)]">
+                    
+                    <div class="col-span-1">
+                        <label class="block text-xs font-black uppercase tracking-widest mb-3 text-slate-500">Contact Email</label>
+                        <input type="email" name="email" placeholder="email@company.com" class="w-full p-4 rounded-sm focus:outline-none focus:border-blue-500 font-bold transition" required>
+                    </div>
+
+                    <div class="col-span-1">
+                        <label class="block text-xs font-black uppercase tracking-widest mb-3 text-slate-500">Phone</label>
+                        <input type="tel" name="phone" placeholder="+1 (555) 000-0000" class="w-full p-4 rounded-sm focus:outline-none focus:border-blue-500 font-bold transition">
+                    </div>
+
+                    <div class="col-span-1">
+                        <label class="block text-xs font-black uppercase tracking-widest mb-3 text-slate-500">Company Name</label>
+                        <input type="text" name="company" placeholder="Company Name" class="w-full p-4 rounded-sm focus:outline-none focus:border-blue-500 font-bold transition" required>
+                    </div>
+
+                    <div class="col-span-1">
+                        <label class="block text-xs font-black uppercase tracking-widest mb-3 text-slate-500">Avg. Transaction Value</label>
+                        <select name="project_value" class="w-full p-4 rounded-sm focus:outline-none focus:border-blue-500 font-bold transition appearance-none">
+                            <option>$5,000 - $10,000</option>
+                            <option>$10,000 - $25,000</option>
+                            <option>$50,000+</option>
+                        </select>
+                    </div>
+
+                    <div class="col-span-1 md:col-span-2">
+                        <label class="block text-xs font-black uppercase tracking-widest mb-3 text-slate-500">Your Sales Bottleneck</label>
+                        <textarea name="bottleneck" placeholder="What is stopping you from closing more high-ticket deals right now?" rows="5" class="w-full p-4 rounded-sm focus:outline-none focus:border-blue-500 font-bold transition" required></textarea>
+                    </div>
+
+                    <div class="col-span-1 md:col-span-2 text-center pt-8">
+                        <button type="submit" id="submit-button" class="bg-blue text-white font-black py-6 px-16 rounded-sm text-xl hover:bg-blue-700 transition-all uppercase tracking-widest w-full md:w-auto shadow-lg shadow-blue-200">
+                            Submit Audit Request
+                        </button>
+                    </div>
+                </form>
+
+                <div id="status-message" class="hidden text-center form-container p-12 md:p-20 shadow-2xl">
+                    <div class="text-6xl mb-6">✅</div>
+                    <h2 class="text-4xl font-black text-slate-900 uppercase tracking-tighter mb-4">Request Received.</h2>
+                    <p class="text-xl text-slate-600 font-medium italic mb-4">We will review your pipeline and reach out within 24 hours.</p>
+                </div>
+            </div>
         </div>
-
-        <button id="my-form-button" type="submit">Submit</button>
-        
-        <p id="form-status"></p>
-    </form>
+    </section>
 
     <script>
-        var form = document.getElementById("my-form");
-        
+        const form = document.getElementById("audit-form");
+        const statusMessage = document.getElementById("status-message");
+        const submitButton = document.getElementById("submit-button");
+
         async function handleSubmit(event) {
-          event.preventDefault();
-          var status = document.getElementById("form-status");
-          var data = new FormData(event.target);
-
-          fetch(event.target.action, {
-            method: form.method,
-            body: data,
-            headers: {
-                'Accept': 'application/json'
-            }
-          }).then(response => {
-            if (response.ok) {
-              status.innerHTML = "Thanks! Your submission was sent successfully.";
-              status.style.color = "green";
-              form.reset(); // Clears the form fields
-            } else {
-              response.json().then(data => {
-                if (Object.hasOwn(data, 'errors')) {
-                  status.innerHTML = data["errors"].map(error => error["message"]).join(", ");
+            event.preventDefault();
+            submitButton.disabled = true;
+            submitButton.innerText = "SENDING...";
+            
+            const data = new FormData(event.target);
+            
+            fetch("https://formspree.io/f/xnjoynny", {
+                method: 'POST',
+                body: data,
+                headers: { 'Accept': 'application/json' }
+            }).then(response => {
+                if (response.ok) {
+                    form.classList.add("hidden");
+                    statusMessage.classList.remove("hidden");
+                    form.reset();
                 } else {
-                  status.innerHTML = "Oops! There was a problem submitting your form.";
+                    alert("Submission failed. Please check if you have verified your email with Formspree.");
+                    submitButton.disabled = false;
+                    submitButton.innerText = "Submit Audit Request";
                 }
-                status.style.color = "red";
-              })
-            }
-          }).catch(error => {
-            status.innerHTML = "Oops! There was a problem submitting your form.";
-            status.style.color = "red";
-          });
+            }).catch(error => {
+                alert("Connection error.");
+                submitButton.disabled = false;
+                submitButton.innerText = "Submit Audit Request";
+            });
         }
-        
-        form.addEventListener("submit", handleSubmit)
+        form.addEventListener("submit", handleSubmit);
     </script>
-
 </body>
 </html>
